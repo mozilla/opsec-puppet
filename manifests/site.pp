@@ -1,5 +1,6 @@
 node default {
     include base
+    include puppet::agent
 }
 
 # https://ask.puppetlabs.com/question/6640/warning-the-package-types-allow_virtual-parameter-will-be-changing-its-default-value-from-false-to-true-in-a-future-release/

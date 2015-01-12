@@ -1,0 +1,3 @@
+---
+puppet::agent::server: "internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com"
+puppet::agent::certname: "puppetmaster-lb.use1.opsec.mozilla.com"
