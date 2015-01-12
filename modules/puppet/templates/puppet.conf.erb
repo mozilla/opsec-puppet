@@ -2,9 +2,10 @@
     logdir = /var/log/puppet
     rundir = /var/run/puppet
     ssldir = $vardir/ssl
-    <% if @ismaster %>
+<% if @ismaster %>
     certname = <%= @server %>
-    <% end %>
+<% end %>
+    hiera_config = /etc/puppet/hiera.yaml
 [agent]
     server = <%= @server %>
     classfile = $vardir/classes.txt
