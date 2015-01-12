@@ -2,11 +2,14 @@
     logdir = /var/log/puppet
     rundir = /var/run/puppet
     ssldir = $vardir/ssl
-    certname = <%= @certname %>
-    dns_alt_names = <%= @certname %>,<%= @server %>
+    <% if @ismaster %>
+    certname = <%= @server %>
+    <% end %>
 [agent]
     server = <%= @server %>
     classfile = $vardir/classes.txt
     localconfig = $vardir/localconfig
+<% if @ismaster %>
 [master]
     autosign = true
+<% end %>

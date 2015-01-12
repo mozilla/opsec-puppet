@@ -1,5 +1,5 @@
 puppet::agent::server: "internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com"
-puppet::agent::certname: "puppetmaster-lb.use1.opsec.mozilla.com"
+puppet::master::server: "internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com"
 
 opsec_members:
     jvehent:
@@ -38,3 +38,10 @@ opsec_members:
         ssh_key_type: ssh-rsa
         sudo: true
 
+disabled_users:
+    centos:
+        ensure: absent
+    ubuntu:
+        ensure: absent
+    ec2-user:
+        ensure: absent

@@ -1,6 +1,6 @@
-class puppet::agent(
+class puppet::master(
     $server = "puppetmaster.example.net",
-    $ismaster = false
+    $ismaster = true
 ) {
     case $::kernel {
         linux: {
