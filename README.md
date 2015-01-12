@@ -25,3 +25,16 @@ sudo puppet agent --server internal-puppetmaster-lb-1774667821.us-east-1.elb.ama
 
 A cronjob that runs puppet every 30 minutes will be created in
 `/var/spool/cron/root`.
+
+Developing
+----------
+
+Merge your changes into the master branch on github, ssh into the puppetmaster
+and pull master into /etc/puppet:
+
+```bash
+$ ssh puppetmaster
+
+ppm$ cd /etc/puppet
+ppm$ git pull origin
+```
