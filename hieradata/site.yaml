@@ -1,3 +1,40 @@
----
 puppet::agent::server: "internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com"
 puppet::agent::certname: "puppetmaster-lb.use1.opsec.mozilla.com"
+
+opsec_members:
+    jvehent:
+        home_dir: /home/jvehent
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxdyrhWjr9iwNcOe3PscVjiP5kw1j531MXzYAePqeOcdVam1+iuggV2CwPF9rH3m/Evzbl2+J2M1e1hmONtQEU9EJbt1PbBDafaKQGQsU99ZKRgw6dKe7PEjswNM2FsERTLwUEiOJbDQhTLq4YBn1ZfjDhtfdQe8DHEFmX4GJT0rS+Vw7f2rrDJhN681D1jEqeLvB8HcZKJbxzxRCWo14l/oOm0borpTmvA0gXIrTnMC3eAYMeQs5+ph2jjYjYcz9H5t5tFrYO9A1PRzHq6xPfYNB1a6spc0B+94cTwVn+u8ZmItI95+G+fGxzzRMp4lga+882nHVdLV+FWJbkdL8p
+        ssh_key_type: ssh-rsa
+        sudo: true
+    jstevensen:
+        home_dir: /home/jstevensen
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDgYkqJ6q+geeU3FvmbhWxC+1e6H36iBiINEzG2gD22bEoNh7mqFVXKafnC4P4eP4GETsIo7baAm0vVn3EJLCSnIOSTEVFhBFiHkQMroejE3+gK3MUKDfDxloxffjz/QFKric9rkhAyiI3aWdCO9GF4rj6aEg7y9AxC+ISMz+MDaH0GOKcW5SPLgfvpIu2F5PfmiIJ98rTZMgpZ69U9rGhMcNMHtq7YQBNqUTusP3dv6a47PDNgEd5J4xhiZe/m/DRAnOLL/7qUek4HF7vZVTRrVYm1fv5gmseWQxs0kvL6EEkW66CAvRtGof1+6GWSSOJ7VRDR5hLvSUvgxuAPD4LH
+        ssh_key_type: ssh-rsa
+        sudo: true
+    gdestuynder:
+        home_dir: /home/gdestuynder
+        ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAgEAufibGV7CyfO6jzHfvBa8A305zTUc2JIdaW6SdS7mqcPpINjfV6+9rBlyjYdfFEndeP5AQ2wz+mP2coMjfHvXfQzqOG/oFPy/skbgwWJU34r6aJKjSwgoZS/+PP082+krQpA/+ZboxUx8o8n70ASB5TwjepblOKxVRwdyIjTcXe1Y9y6AUij18ZvjNkcZLUh2g/zq44QC+f1kDBG90G2UeUmcOK6/hIatq2Ja5i5otMZvXVvfF/I3N2H0EcpUOdGUxJmm1OIqF6a98gkw7bfgs+tq5NwPmd8hW7zegLLLz9DB3H2UeqQuq51ALl93jFD1bi3XKtB0KcI69BecIyoJKJHSqj2CW6+tuS4utE00X53Z0tXBognMPhy90hMoHquGeZzAnrV/lPiLzKjtyv+CEDZUAr+T1OvKFREJzzhLg491LEkAgoZjbXWblrad/6q5lnSNFYUGmNyfGpQ5mtX3mgVpf+GweRAEP9II6We6np8q9qEfAob7y7/jDKBWjjUUFz9KdZpURxzQhqfeS2ZxsHGNrZe1NsjsOyEpnzPB4MC364IOSGrA7+gguRdX5STJArJSIhhteYkY1Z8obXhudBeTkA21MhnUNMskBb8pcTvum2FzqYcw7OYMe832dd2EtyOuRPSsB8Q06BxNbOjF0Xgkv8ibjRGdFasNgsLKHTE=
+        ssh_key_type: ssh-rsa
+        sudo: true
+    mpurzynski:
+        home_dir: /home/mpurzynski
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQChW3cVQsWMJrr0gm4Q+TURmyk1tO67PATscrPyjoIANWzNfdfAMwyHeJ33DFMvS97rINIUMqhtpEzgXXFSBZC0sPZcK/tq7Yf6EN9W2mNltnW1R1i9oX4kmq2tUhPBkUPrI4a6m/tK3YR/Hpdt0ZTzTPhusO9G0oSjpl1DPGCrahmnV3Q1Mr7pHys8pMuNc2ehEYNpsSQEntVZPCOy0N+/M7Iz0PBaoxXB0I1pHl3OHwjvj+SZBFoX0iLHvyzrtJl5TRYSqE/9449BskW6sIEOpny7+YHGcjO6rK4eune9TVr7IJFYLJf7t7yaBOgsQVdTnJyvY+PdcHzp3YVtYgxN
+        ssh_key_type: ssh-rsa
+        sudo: true
+    jbryner:
+        home_dir: /home/jbryner
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC/yM++5/btrWL49ShltWAOokmXofFnSz02q0rJbkCEJsge/msouRLgf9RLJjYAph2Y0rEMZ9yEUo55P52iKOug3qu+w7w7FDRJeIVIrgWCjG9b59DXsjBX0sdqEb5eOh4+fgiaDi6mjS+l2v9xP3qSaZ6We/JAQxH6auBwv6LM+rWhgwVk56z5y6rbScnIKcMvO0ELItDcT9cgXRpuEx++qUc0OgvSKcqJ9XTQ1Syn7GmoFBmFAF2HDWOr4nM/b79vf1iINaqziIvp0eRLHxo+FS4iBSnOwywiINtesMWh5+SJ2YwYW0gwzNFDJy1ES8EPHdncovHYveE0kyrppg/5
+        ssh_key_type: ssh-rsa
+        sudo: true
+    gene:
+        home_dir: /home/gene
+        ssh_key: AAAAB3NzaC1yc2EAAAABJQAAAgEAvA5XbIUNdrsnm5SjbMUROnZKcEaiiaGW+G4iAxhedd/E2dmSGpybtNY2AtZXGaorz/jqWdP9LKub6FIqJt+csYCqxPG+ZU/gSgeYacMEyBGsKFR9hJR0BdZYzGPVk1CWLoM8pO354ELNorL15OfwOX3mnDHgh1yTb3W1cDJA/X/D4FxwchFjvAcDaqBWRC7yIhc2N/0NiLgvbjhkwZt8xsjCMhPxKuJ9mOxgEAOzxOUDIdLdtfYB2eBiTP2OtfYDIgvkrF4HoNZZlTxMuOTmjrCMzeBI+NMlS5bAMNt4lHF08+dPw4Ohvz0V7pIrny8W9FR0NccxBlb8NLD/ePjIjupOSv1qiERn2FigaGZrzFtuxkB1/EqI6p4+kYgwMMqFAx4l3H7RVhjSETdRTk0cjtjeHepp1n4FVq4LZv3CM1l9mD4Ho2uqaGGGPfkwPBMnO6v0HjfpV6ZvFTkGhkYvD4SsUoubs/wC6W4JTV4EzRlN5fTPTemXYfCNaZXbjvus2+w5bMpF//UjWTogqDWLL56Ouan3zmEA7hrgb7KufLVsegFCeNTvhR6iEtb8l4OvO8zEXbcdDsf5bzRqZg9LVMUA8KthODfLJWKKUu3KR50wyQT93bhlbGoPS/8cE0rXbw1CyJdKGCEzTKXEZCOA2bpfjXYUxV3cRPukHSUbGVE=
+        ssh_key_type: ssh-rsa
+        sudo: true
+    ameihm:
+        home_dir: /home/ameihm
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAACAQDxGAfTeOaAHqSAMC8GyN38LQi4T1ONQa0iiCQ4aeocT1/8hLo928P9AaA8LB7R53FIl/HalzNCIBMrD69BL43+Kh+mcrGUfZUL4s/XbVzwNBtzYu157cmBflLQ/ydQr/OiCu4y4u2FrZc9pH9sL9GNe3sR9FFXiExXZPXNZ0rYnPBNWevfXPyM7OiAtPKpwTbVsOl5M9Ju+NvdOKyEgEZC3SCaE/1GcbnMeLZowWrTg9XLzit/OJDdP4JUCDkz6b+z0tfe+Um6DDouaORiyw8vzQQn23G1IC11+dbj0CrcNuvMKB7Advq/5r4pUatrOdNMh0O2V/L86fpai0nU4Ifqiqi09gMcMFllVeG41/RhFZZ0A4LF60BM/9ObRzR0lfBXE4vGYkuXK4vuYwPQrV/P/VBDxJhFsYbfhq6BnuxhH+r4t7r+Xz3XAzukoxkfRgKphGGqGP7eB9PS2C3kafurburruoCB0S6xWg2Doq91MTmp6c2D1wtWn4N+KmrOxWLwBfA8w46KEPDOudZ/jWjjD+yheMmXGMQi8oI6f3+0AcNmncKPE29H74b4xK3FDmxZO+ngSd1kBxz5mTQZR4XbTj/+/rWpLCsN6WCcI/7PLzMMPOPCO6qkH4URsxZr0DjbygCXZIwH2y6J+F/FYYL5XkyFzeRZ5vR/AOzTStMe7w==
+        ssh_key_type: ssh-rsa
+        sudo: true
+

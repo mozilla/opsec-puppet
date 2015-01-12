@@ -1,7 +1,7 @@
 class base {
     # basic tools
     package {
-        ['ntp', 'sudo', 'htop']:
+        ['ntp', 'htop']:
             ensure => latest
     }
     # centos and redhat specific packages
