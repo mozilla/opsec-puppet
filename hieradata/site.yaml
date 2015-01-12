@@ -1,5 +1,5 @@
-puppet::agent::server: "internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com"
-puppet::master::server: "internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com"
+puppet::agent::server: "puppet.use1.opsec.mozilla.com"
+puppet::master::server: "puppet.use1.opsec.mozilla.com"
 
 opsec_members:
     jvehent:

@@ -20,7 +20,7 @@ sudo apt-get update && sudo apt-get -y install puppet && sudo puppet agent --ena
 
 Bootstrap puppet:
 ```bash
-sudo puppet agent --server internal-puppetmaster-lb-1774667821.us-east-1.elb.amazonaws.com --onetime --no-daemonize --verbose
+sudo puppet agent --server puppet.use1.opsec.mozilla.com --onetime --no-daemonize --verbose
 ```
 
 A cronjob that runs puppet every 30 minutes will be created in
