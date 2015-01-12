@@ -7,3 +7,9 @@
 [submodule "modules/sudo"]
 	path = modules/sudo
 	url = git@github.com:saz/puppet-sudo.git
+[submodule "modules/os_hardening"]
+	path = modules/os_hardening
+	url = git@github.com:TelekomLabs/puppet-os-hardening.git
+[submodule "modules/sysctl"]
+	path = modules/sysctl
+	url = git@github.com:thias/puppet-sysctl.git
