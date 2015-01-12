@@ -4,3 +4,6 @@
 [submodule "modules/account"]
 	path = modules/account
 	url = git@github.com:moopless/puppet-account.git
+[submodule "modules/sudo"]
+	path = modules/sudo
+	url = git@github.com:saz/puppet-sudo.git
