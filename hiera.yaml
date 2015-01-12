@@ -2,7 +2,6 @@
     - yaml
 :yaml:
     :datadir: /etc/puppet/hieradata
-:logger:
-    - puppet
 :hierarchy:
-    - site
+    - defaults
+    - accounts
