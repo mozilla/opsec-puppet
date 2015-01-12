@@ -4,7 +4,7 @@ class puppet::cron {
             cron {
                 "puppet":
                     ensure  => present,
-                    command => "sleep $((RANDOM%600)) && /usr/bin/puppet agent --onetime --no-daemonize --logdest syslog > /dev/null 2>&1",
+                    command => "/bin/sleep $((RANDOM\%600)) && /usr/bin/puppet agent --onetime --no-daemonize --logdest syslog > /dev/null 2>&1",
                     user    => "root",
                     hour    => "*",
                     minute  => "*/30",
