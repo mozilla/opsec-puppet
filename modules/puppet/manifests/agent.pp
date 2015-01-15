@@ -1,7 +1,7 @@
 class puppet::agent(
-    $server         = "puppetmaster.example.net",
-    $ismaster       = false,
-    $pin_puppet_env = "production"
+    $server     = "puppetmaster.example.net",
+    $ismaster   = false,
+    $pinned_env = "production"
 ) {
     case $::kernel {
         linux: {

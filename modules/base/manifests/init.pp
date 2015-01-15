@@ -18,5 +18,7 @@ class base {
     $accounts = hiera_hash('opsec_members')
     create_resources('account::user', $accounts)
 
-    include puppet::agent
+    class { 'puppet::agent':
+        pinned_env => $pin_puppet_env
+    }
 }
