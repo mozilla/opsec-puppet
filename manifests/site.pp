@@ -1,32 +1,23 @@
-node default {
-    include base
-    include puppet::agent
-
-    # create user accounts
-    $accounts = hiera_hash('opsec_members')
-    create_resources('account::user', $accounts)
-
-    # delete disabled users
-    # $disabled = hiera_hash('disabled_users')
-    # create_resources('account::user', $disabled)
-}
-
 node 'puppetmaster1.use1.opsec.mozilla.com' {
+    include base
     include puppet::master
 }
 
 # TLS Observatory
 node /observer-retriever\d+.use1.opsec.mozilla.com/ {
     $pin_puppet_env = "dev"
+    include base
     include observer::retriever
 }
 node /observer-analyzer\d+.use1.opsec.mozilla.com/ {
     $pin_puppet_env = "dev"
+    include base
     include observer::analyzer
     include observer::mq
 }
 node /observer-db\d+.use1.opsec.mozilla.com/ {
     $pin_puppet_env = "dev"
+    include base
     include observer::db
 }
 
