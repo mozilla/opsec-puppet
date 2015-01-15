@@ -18,6 +18,13 @@ Ubuntu packages:
 sudo apt-get update && sudo apt-get -y install puppet && sudo puppet agent --enable
 ```
 
+Set the hostname of the instances:
+```bash
+sudo echo "myhostname" > /etc/hostname
+sudo echo "1.2.3.4 myhostname.mysubdomain myhostname" >> /etc/hosts
+sudo hostname -F /etc/hostname
+```
+
 Bootstrap puppet:
 ```bash
 sudo puppet agent --server puppet.use1.opsec.mozilla.com --onetime --no-daemonize --verbose
