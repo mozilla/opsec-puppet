@@ -17,13 +17,16 @@ node 'puppetmaster1.use1.opsec.mozilla.com' {
 
 # TLS Observatory
 node /observer-retriever\d+.use1.opsec.mozilla.com/ {
+    $pin_puppet_env = "dev"
     include observer::retriever
 }
 node /observer-analyzer\d+.use1.opsec.mozilla.com/ {
+    $pin_puppet_env = "dev"
     include observer::analyzer
     include observer::mq
 }
 node /observer-db\d+.use1.opsec.mozilla.com/ {
+    $pin_puppet_env = "dev"
     include observer::db
 }
 
