@@ -10,13 +10,13 @@ class observer::package (
     include wget
     wget::fetch { 'mozilla-tls-observer':
         source      => $url,
-        destination => '/tmp/observer.deb',
+        destination => "/tmp/mozilla-tls-observer-$version.deb",
         timeout     => 0,
         verbose     => false,
     }
     package { 'mozilla-tls-observer':
-        source  => '/tmp/observer.deb',
-        ensure  => $version,
+        source  => "/tmp/mozilla-tls-observer-$version.deb",
+        provider => dpkg,
         require => Wget::Fetch['mozilla-tls-observer']
     }
 }
