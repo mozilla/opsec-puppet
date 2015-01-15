@@ -5,7 +5,6 @@
 <% if @ismaster %>
     certname = <%= @server %>
 <% end %>
-    hiera_config = /etc/puppet/hiera.yaml
 [agent]
     server = <%= @server %>
     classfile = $vardir/classes.txt
@@ -13,4 +12,6 @@
 <% if @ismaster %>
 [master]
     autosign = true
+    environmentpath = $confdir/environments
+    hiera_config = $confdir/hiera.yaml
 <% end %>

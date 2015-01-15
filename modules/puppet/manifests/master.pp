@@ -1,6 +1,7 @@
 class puppet::master(
     $server = "puppetmaster.example.net",
-    $ismaster = true
+    $ismaster = true,
+    $autosign = "*.example.net"
 ) {
     case $::kernel {
         linux: {
@@ -11,6 +12,29 @@ class puppet::master(
                     owner   => "root",
                     group   => "root",
                     content => template("puppet/puppet.conf.erb")
+            }
+            file {
+		"/etc/puppet/hiera.yaml":
+                    ensure  => present,
+                    mode    => 0755,
+                    owner   => "root",
+                    group   => "root",
+                    content => template("puppet/hiera.yaml.erb");
+            }
+            file {
+		"/etc/puppet/autosign.conf":
+                    ensure  => present,
+                    mode    => 0755,
+                    owner   => "root",
+                    group   => "root",
+                    content => template("puppet/autosign.conf.erb");
+            }
+            file {
+		"/etc/puppet/environments/production":
+                    ensure  => directory,
+                    mode    => 0755,
+                    owner   => "root",
+                    group   => "root";
             }
         }
     }

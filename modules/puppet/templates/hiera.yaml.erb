@@ -1,0 +1,8 @@
+:backends:
+    - yaml
+:yaml:
+    :datadir: /etc/puppet/environments/%{::environment}/hieradata
+:hierarchy:
+    - defaults
+    - accounts
+    - services

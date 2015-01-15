@@ -1,2 +1,3 @@
 puppet::agent::server: "puppet.use1.opsec.mozilla.com"
 puppet::master::server: "puppet.use1.opsec.mozilla.com"
+puppet::master::autosign: "*.use1.opsec.mozilla.com"
