@@ -13,3 +13,6 @@
 [submodule "modules/sysctl"]
 	path = modules/sysctl
 	url = https://github.com/jvehent/puppet-sysctl.git
+[submodule "modules/wget"]
+	path = modules/wget
+	url = https://github.com/maestrodev/puppet-wget.git

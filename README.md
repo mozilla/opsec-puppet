@@ -3,8 +3,7 @@ OpSec Puppet
 
 Because OpSec systems need love too...
 
-Bootstrap a node
-----------------
+## Bootstrap a node
 
 To puppetize a new EC2 instance, run the following commands:
 
@@ -33,12 +32,38 @@ sudo puppet agent --server puppet.use1.opsec.mozilla.com --onetime --no-daemoniz
 A cronjob that runs puppet every 30 minutes will be created in
 `/var/spool/cron/root`.
 
-Developing
-----------
+## Developing
+
 
 Clone this repository and all its submodules with:
 ```bash
 git clone --recursive git@github.com:mozilla/opsec-puppet.git
 ```
 
-Merge your changes into the master branch on github and the puppetmaster will pull the changes.
+Work in progress must go into the `dev` branch. The puppetmaster pull the `dev`
+branch every minute into the `dev` environment. You can then run puppet agent
+against the `dev` environment from your node as follow:
+
+```bash
+puppet agent --test --environment=dev
+```
+
+Once happy with your changes, submit a pull request against the `master` branch.
+The master branch is made available as the `production` (default) environment.
+
+### Submodules
+
+When including third party modules, it is preferred to insert them as
+submodules. A submodule can be added with the following command:
+
+```bash
+git submodule add https://github.com/maestrodev/puppet-wget.git modules/wget
+```
+
+You can pull the latest version of a submodule by calling `git pull` from the
+submodule directory, or from the root for all submodules with:
+
+```
+git submodule foreach git pull origin master
+```
+
