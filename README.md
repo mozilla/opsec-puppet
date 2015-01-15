@@ -3,8 +3,8 @@ OpSec Puppet
 
 Because OpSec systems need love too...
 
-Bootstrap
----------
+Bootstrap a node
+----------------
 
 To puppetize a new EC2 instance, run the following commands:
 
@@ -36,12 +36,9 @@ A cronjob that runs puppet every 30 minutes will be created in
 Developing
 ----------
 
-Merge your changes into the master branch on github, ssh into the puppetmaster
-and pull master into /etc/puppet:
-
+Clone this repository and all its submodules with:
 ```bash
-$ ssh puppetmaster
-
-ppm$ cd /etc/puppet
-ppm$ git pull origin
+git clone --recursive git@github.com:mozilla/opsec-puppet.git
 ```
+
+Merge your changes into the master branch on github and the puppetmaster will pull the changes.
