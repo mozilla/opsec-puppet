@@ -1,15 +1,15 @@
 [submodule "modules/stdlib"]
 	path = modules/stdlib
-	url = git@github.com:puppetlabs/puppetlabs-stdlib.git
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
 [submodule "modules/account"]
 	path = modules/account
-	url = git@github.com:moopless/puppet-account.git
+	url = https://github.com/moopless/puppet-account.git
 [submodule "modules/sudo"]
 	path = modules/sudo
-	url = git@github.com:saz/puppet-sudo.git
+	url = https://github.com/saz/puppet-sudo.git
 [submodule "modules/os_hardening"]
 	path = modules/os_hardening
-	url = git@github.com:TelekomLabs/puppet-os-hardening.git
+	url = https://github.com/TelekomLabs/puppet-os-hardening.git
 [submodule "modules/sysctl"]
 	path = modules/sysctl
-	url = git@github.com:thias/puppet-sysctl.git
+	url = https://github.com/thias/puppet-sysctl.git
