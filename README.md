@@ -32,8 +32,7 @@ sudo puppet agent --server puppet.use1.opsec.mozilla.com --onetime --no-daemoniz
 A cronjob that runs puppet every 30 minutes will be created in
 `/var/spool/cron/root`.
 
-## Developing
-
+## Developing using the dev branch
 
 Clone this repository and all its submodules with:
 ```bash
@@ -50,6 +49,19 @@ puppet agent --test --environment=dev
 
 Once happy with your changes, submit a pull request against the `master` branch.
 The master branch is made available as the `production` (default) environment.
+
+### Pin a node to the dev branch
+
+In the node definition in `manifests/site.pp`, set the `$pin_puppet_env` to `dev`:
+```puppet
+node /observer-retriever\d+.use1.opsec.mozilla.com/ {
+    $pin_puppet_env = "dev"
+    include observer::retriever
+}
+```
+
+And run `puppet agent --test --environment=dev` to set the pin.
+To reset the environment to production, simply unset the pining in `site.pp`.
 
 ### Submodules
 

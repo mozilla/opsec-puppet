@@ -9,6 +9,7 @@
     server = <%= @server %>
     classfile = $vardir/classes.txt
     localconfig = $vardir/localconfig
+    environment = <%= @pinned_env %>
 <% if @ismaster %>
 [master]
     autosign = true
