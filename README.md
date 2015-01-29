@@ -68,6 +68,7 @@ To reset the environment to production, simply unset the pining in `site.pp`.
 When including third party modules, it is preferred to insert them as
 submodules. A submodule can be added with the following command:
 
+** /!\ Note: Only use HTTPS links when adding submodules /!\ **
 ```bash
 git submodule add https://github.com/maestrodev/puppet-wget.git modules/wget
 ```
@@ -79,3 +80,10 @@ submodule directory, or from the root for all submodules with:
 git submodule foreach git pull origin master
 ```
 
+To remove a submodule, do the following:
+```bash
+git submodule deinit modules/mymodule
+git rm --cached modules/mymodule
+rm -rf .git/modules/modules/mymodule
+git commit -m "removed mymodule" .gitmodules
+```
