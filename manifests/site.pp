@@ -2,6 +2,9 @@ node 'puppetmaster1.use1.opsec.mozilla.com' {
     include base
     include puppet::master
 }
+node 'gw1.use1.opsec.mozilla.com' {
+    include base
+}
 
 # TLS Observatory
 node /observer-web\d+.use1.opsec.mozilla.com/ {
