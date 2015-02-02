@@ -4,4 +4,32 @@
 #
 # Contributor: Julien Vehent jvehent@mozilla.com [:ulfr]
 class observer::db {
+    case $::operatingsystem {
+        'Ubuntu': {
+            include observer::package
+            package{
+                ['openjdk-7-jre', 'curl']:
+                    ensure => latest,
+                    before => Class['elasticsearch']
+            }
+            class {
+                'elasticsearch':
+                    ensure => 'present',
+                    autoupgrade => true,
+                    manage_repo  => true,
+                    repo_version => '1.4',
+                    status => 'enabled'
+            }
+            elasticsearch::instance {
+                'tlsobserver':
+                    datadir => '/mnt/esdata/tlsobserver'
+            }
+            exec {
+                'push certificates mappings':
+                    command => "/usr/bin/curl -XPUT http://localhost:9200/certificates -d @/etc/observer/certificates_schema.json",
+                    subscribe => exec['install-mozilla-tls-observer'],
+                    refreshonly => true
+            }
+        }
+    }
 }

@@ -2,21 +2,24 @@ node 'puppetmaster1.use1.opsec.mozilla.com' {
     include base
     include puppet::master
 }
+node 'gw1.use1.opsec.mozilla.com' {
+    include base
+}
 
 # TLS Observatory
+node /observer-web\d+.use1.opsec.mozilla.com/ {
+    include base
+}
 node /observer-retriever\d+.use1.opsec.mozilla.com/ {
-    $pin_puppet_env = "dev"
     include base
     include observer::retriever
 }
 node /observer-analyzer\d+.use1.opsec.mozilla.com/ {
-    $pin_puppet_env = "dev"
     include base
     include observer::analyzer
     include observer::mq
 }
 node /observer-db\d+.use1.opsec.mozilla.com/ {
-    $pin_puppet_env = "dev"
     include base
     include observer::db
 }

@@ -4,4 +4,8 @@
 #
 # Contributor: Julien Vehent jvehent@mozilla.com [:ulfr]
 class observer::mq {
+    package {
+        'rabbitmq-server':
+            ensure => latest
+    }
 }

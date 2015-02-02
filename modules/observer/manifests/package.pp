@@ -7,16 +7,21 @@ class observer::package (
     $url,
     $version
 ) {
-    include wget
-    wget::fetch { 'mozilla-tls-observer':
-        source      => $url,
-        destination => "/tmp/mozilla-tls-observer-$version.deb",
-        timeout     => 0,
-        verbose     => false,
-    }
-    package { 'mozilla-tls-observer':
-        source  => "/tmp/mozilla-tls-observer-$version.deb",
-        provider => dpkg,
-        require => Wget::Fetch['mozilla-tls-observer']
+    case $::operatingsystem {
+        'Ubuntu': {
+            include wget
+            wget::fetch { 'mozilla-tls-observer':
+                source      => $url,
+                destination => "/tmp/mozilla-tls-observer-$version.deb",
+                timeout     => 0,
+                verbose     => false,
+            }
+            exec {
+                'install-mozilla-tls-observer':
+                    command => "/usr/bin/dpkg -i /tmp/mozilla-tls-observer-$version.deb",
+                    subscribe => wget::fetch['mozilla-tls-observer'],
+                    refreshonly => true
+            }
+        }
     }
 }
