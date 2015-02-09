@@ -18,7 +18,7 @@ class observer::package (
             }
             exec {
                 'install-mozilla-tls-observer':
-                    command => "/usr/bin/dpkg -i /tmp/mozilla-tls-observer-$version.deb",
+                    command => "/usr/sbin/service tlsobserver-analyzer stop; /usr/sbin/service tlsobserver-retriever stop; /usr/bin/dpkg -i /tmp/mozilla-tls-observer-$version.deb",
                     subscribe => wget::fetch['mozilla-tls-observer'],
                     refreshonly => true
             }
