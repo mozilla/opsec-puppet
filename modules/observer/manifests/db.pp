@@ -23,6 +23,7 @@ class observer::db {
             elasticsearch::instance {
                 'tlsobserver':
                     datadir       => '/mnt/esdata/tlsobserver',
+                    config        => {'script.groovy.sandbox.enabled'   => 'true' },
                     init_defaults => {'ES_HEAP_SIZE'                    => '3500M'}
             }
             exec {
