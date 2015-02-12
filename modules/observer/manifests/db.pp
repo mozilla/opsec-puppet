@@ -22,7 +22,8 @@ class observer::db {
             }
             elasticsearch::instance {
                 'tlsobserver':
-                    datadir => '/mnt/esdata/tlsobserver'
+                    datadir => '/mnt/esdata/tlsobserver',
+                    init_defaults => {'ES_HEAP_SIZE' => "3500M"}
             }
             exec {
                 'push certificates mappings':
