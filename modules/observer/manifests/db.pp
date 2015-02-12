@@ -14,21 +14,21 @@ class observer::db {
             }
             class {
                 'elasticsearch':
-                    ensure => 'present',
-                    autoupgrade => true,
+                    ensure       => 'present',
+                    autoupgrade  => true,
                     manage_repo  => true,
                     repo_version => '1.4',
-                    status => 'enabled'
+                    status       => 'enabled'
             }
             elasticsearch::instance {
                 'tlsobserver':
-                    datadir => '/mnt/esdata/tlsobserver',
-                    init_defaults => {'ES_HEAP_SIZE' => "3500M"}
+                    datadir       => '/mnt/esdata/tlsobserver',
+                    init_defaults => {'ES_HEAP_SIZE'                    => '3500M'}
             }
             exec {
                 'push certificates mappings':
-                    command => "/usr/bin/curl -XPUT http://localhost:9200/certificates -d @/etc/observer/certificates_schema.json",
-                    subscribe => exec['install-mozilla-tls-observer'],
+                    command     => '/usr/bin/curl -XPUT http://localhost:9200/certificates -d @/etc/observer/certificates_schema.json',
+                    subscribe   => exec['install-mozilla-tls-observer'],
                     refreshonly => true
             }
         }

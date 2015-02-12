@@ -12,14 +12,14 @@ class observer::package (
             include wget
             wget::fetch { 'mozilla-tls-observer':
                 source      => $url,
-                destination => "/tmp/mozilla-tls-observer-$version.deb",
+                destination => "/tmp/mozilla-tls-observer-${version}.deb",
                 timeout     => 0,
                 verbose     => false,
             }
             exec {
                 'install-mozilla-tls-observer':
-                    command => "/usr/sbin/service tlsobserver-analyzer stop; /usr/sbin/service tlsobserver-retriever stop; /usr/bin/dpkg -i /tmp/mozilla-tls-observer-$version.deb",
-                    subscribe => wget::fetch['mozilla-tls-observer'],
+                    command     => "/usr/sbin/service tlsobserver-analyzer stop; /usr/sbin/service tlsobserver-retriever stop; /usr/bin/dpkg -i /tmp/mozilla-tls-observer-${version}.deb",
+                    subscribe   => wget::fetch['mozilla-tls-observer'],
                     refreshonly => true
             }
         }
