@@ -4,22 +4,22 @@
 #
 # Contributor: Julien Vehent jvehent@mozilla.com [:ulfr]
 class observer::analyzer(
-    $rabbitmq_relay = "127.0.0.1:5672",
-    $elasticsearch_db = "127.0.0.1:9200"
+    $rabbitmq_relay = '127.0.0.1:5672',
+    $elasticsearch_db = '127.0.0.1:9200'
 ) {
     case $::operatingsystem {
         'Ubuntu': {
             include observer::package
             file {
                 '/etc/observer/analyzer.cfg':
-                    owner => 'root',
-                    mode => 755,
+                    owner   => 'root',
+                    mode    => '0755',
                     content => template('observer/analyzer.cfg.erb')
             }
             service{
                 'tlsobserver-analyzer' :
-                    require   => Class['observer::package'],
-                    ensure    => running
+                    require => Class['observer::package'],
+                    ensure  => running
             }
         }
     }
