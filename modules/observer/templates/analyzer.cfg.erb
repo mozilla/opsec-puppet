@@ -1,9 +1,11 @@
 [General]
 RabbitMQRelay = "<%= @rabbitmq_relay %>"
 ElasticSearch = "<%= @elasticsearch_db %>"
-GoRoutines    = 10 #number of times to multiply the number of machine cores
+GoRoutines    = 100 #number of times to multiply the number of machine cores
 
 [TrustStores]
+Name  = "Mozilla"
+Path  = "/etc/observer/truststores/CA_mozilla_nss.crt"
 Name  = "Apple_10_10_0"
 Path  = "/etc/observer/truststores/CA_apple_10.10.0.crt"
 Name  = "Apple_10_9_5"
