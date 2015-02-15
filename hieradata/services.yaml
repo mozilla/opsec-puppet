@@ -1,5 +1,5 @@
 observer::package::url: "https://s3.amazonaws.com/mozopsecrepo1/mozilla-tls-observer_20150215%2B85eaa4f.dev_amd64.deb"
 observer::package::version: "20150215+85eaa4f"
-observer::analyzer::rabbitmq_relay: "amqp://guest:guest@localhost:5672/"
-observer::analyzer::elasticsearch_db: "observer-db1.use1.opsec.mozilla.com:9200"
-observer::retriever::rabbitmq_relay: "amqp://guest:guest@observer-analyzer1.use1.opsec.mozilla.com:5672/"
+observer::analyzer::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
+observer::analyzer::elasticsearch_db: "172.19.2.122:9200"
+observer::retriever::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"

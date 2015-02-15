@@ -14,10 +14,14 @@ node /observer-retriever\d+.use1.opsec.mozilla.com/ {
     include base
     include observer::retriever
 }
-node /observer-analyzer\d+.use1.opsec.mozilla.com/ {
+node 'observer-analyzer1.use1.opsec.mozilla.com' {
     include base
     include observer::analyzer
     include observer::mq
+}
+node /observer-analyzer[2-9].use1.opsec.mozilla.com/ {
+    include base
+    include observer::analyzer
 }
 node /observer-db\d+.use1.opsec.mozilla.com/ {
     include base
