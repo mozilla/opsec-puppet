@@ -4,5 +4,15 @@ ElasticSearch = "<%= @elasticsearch_db %>"
 GoRoutines    = 10 #number of times to multiply the number of machine cores
 
 [TrustStores]
-Name  = "NSS"
-Path  = "/etc/observer/moz-CAs.crt"
+Name  = "Apple_10_10_0"
+Path  = "/etc/observer/truststores/CA_apple_10.10.0.crt"
+Name  = "Apple_10_9_5"
+Path  = "/etc/observer/truststores/CA_apple_10.9.5.crt"
+Name  = "Apple_10_8_5"
+Path  = "/etc/observer/truststores/CA_apple_10.8.5.crt"
+Name  = "Java"
+Path  = "/etc/observer/truststores/CA_java.crt"
+Name  = "Microsoft"
+Path  = "/etc/observer/truststores/CA_microsoft.crt"
+Name  = "Ubuntu_12_04"
+Path  = "/etc/observer/truststores/CA_ubuntu_12.04.crt"
