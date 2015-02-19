@@ -22,3 +22,6 @@
 [submodule "modules/apt"]
 	path = modules/apt
 	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "modules/ssh_hardening"]
+	path = modules/ssh_hardening
+	url = https://github.com/TelekomLabs/puppet-ssh-hardening
