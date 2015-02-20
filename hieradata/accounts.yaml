@@ -16,7 +16,7 @@ opsec_members:
         sudo: true
     mpurzynski:
         home_dir: /home/mpurzynski
-        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQChW3cVQsWMJrr0gm4Q+TURmyk1tO67PATscrPyjoIANWzNfdfAMwyHeJ33DFMvS97rINIUMqhtpEzgXXFSBZC0sPZcK/tq7Yf6EN9W2mNltnW1R1i9oX4kmq2tUhPBkUPrI4a6m/tK3YR/Hpdt0ZTzTPhusO9G0oSjpl1DPGCrahmnV3Q1Mr7pHys8pMuNc2ehEYNpsSQEntVZPCOy0N+/M7Iz0PBaoxXB0I1pHl3OHwjvj+SZBFoX0iLHvyzrtJl5TRYSqE/9449BskW6sIEOpny7+YHGcjO6rK4eune9TVr7IJFYLJf7t7yaBOgsQVdTnJyvY+PdcHzp3YVtYgxN
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDWjtMmpMcHqdOtbQ4/YhL80xXauMO3TOEDKyJQOF0qWAnEyu/96mtaBOozjTLCN02U7m8ZzADMkEznAidu+4NxLsu7ZoF1KhvMVuKXbk5Xig2vmmWdPhN5pJW+CBApn7wav3TCaqmsojZST7DBxxMiaayViQ3Xi/oJ45sSBYyj/e8sG3uatG2zAlqc1N/giZbY91fw61xGH8vjmTbd2jPl2YPs5fdYomHMTbKvLHDMXtrIAnxhLW3IgsU+hJStOsE2hzM56n8rtLsWUPa2X9oc77bax+NrC1yy5oxN7a/i13Sl5I17+/faJiU1pawidh+wWjqlHkUmgVzm1TGbZKTr
         ssh_key_type: ssh-rsa
         sudo: true
     jbryner:
