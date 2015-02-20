@@ -6,6 +6,11 @@ node 'gw1.use1.opsec.mozilla.com' {
     include base
 }
 
+node 'nat1.use1.opsec.mozilla.com' {
+    include base
+    include nat
+}
+
 # TLS Observatory
 node /observer-web\d+.use1.opsec.mozilla.com/ {
     include base
