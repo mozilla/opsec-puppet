@@ -6,7 +6,7 @@ node 'gw1.use1.opsec.mozilla.com' {
     include base
 }
 
-node 'nat1.use1.opsec.mozilla.com' {
+node /nat\d+.use1.opsec.mozilla.com/ {
     include base
     include nat
 }
