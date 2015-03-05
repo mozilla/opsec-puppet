@@ -24,7 +24,7 @@ class observer::db {
                 'tlsobserver':
                     datadir       => '/mnt/esdata/tlsobserver',
                     config        => {'script.groovy.sandbox.enabled'   => 'true' },
-                    init_defaults => {'ES_HEAP_SIZE'                    => '3500M'}
+                    init_defaults => {'ES_HEAP_SIZE'                    => '2500M'}
             }
             exec {
                 'push certificates mappings':
