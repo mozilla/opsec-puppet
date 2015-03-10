@@ -6,6 +6,6 @@ for env in $(ls /etc/puppet/environments); do
     [ "$env" == "production" ] && env="master"
     git fetch --all
     git reset --hard origin/$env
-    librarian-puppet install
+    /usr/local/bin/librarian-puppet update
 done
 ) 2>&1
