@@ -24,6 +24,12 @@ class puppet::master(
                     owner   => 'root',
                     group   => 'root',
                     content => template('puppet/autosign.conf.erb');
+                '/etc/puppet/update_from_upstream.sh':
+                    ensure  => present,
+                    mode    => 0755,
+                    owner   => 'root',
+                    group   => 'root',
+                    content => 'puppet:///modules/puppet/update_from_upstream.sh';
                 '/etc/puppet/environments/production':
                     ensure  => directory,
                     mode    => 0755,
@@ -34,6 +40,14 @@ class puppet::master(
                 'librarian-puppet':
                     ensure   => 'installed',
                     provider => 'gem',
+            }
+            cron {
+                'update puppetmaster from upstream':
+                    ensure  => present,
+                    command => '/etc/puppet/update_from_upstream.sh > /dev/null 2>&1',
+                    user    => 'root',
+                    hour    => '*',
+                    minute  => '*/5',
             }
         }
     }
