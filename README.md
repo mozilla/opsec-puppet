@@ -55,7 +55,10 @@ The master branch is made available as the `production` (default) environment.
 In the node definition in `manifests/site.pp`, set the `$pin_puppet_env` to `dev`:
 ```puppet
 node /observer-retriever\d+.use1.opsec.mozilla.com/ {
-    $pin_puppet_env = "dev"
+    class {
+        'puppet::agent':
+            pinned_env => 'dev'
+    }
     include observer::retriever
 }
 ```
