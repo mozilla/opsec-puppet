@@ -45,6 +45,9 @@ class puppet::master(
             }
         }
     }
-    include puppet::agent
+    class {
+        'puppet::agent':
+            ismaster => true
+    }
     include puppet::cron
 }
