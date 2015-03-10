@@ -1,4 +1,5 @@
 node 'puppetmaster1.use1.opsec.mozilla.com' {
+    $ismaster = true
     include base
     include puppet::master
 }
