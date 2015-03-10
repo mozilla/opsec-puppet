@@ -63,27 +63,10 @@ node /observer-retriever\d+.use1.opsec.mozilla.com/ {
 And run `puppet agent --test --environment=dev` to set the pin.
 To reset the environment to production, simply unset the pining in `site.pp`.
 
-### Submodules
+### Dependencies
 
-When including third party modules, it is preferred to insert them as
-submodules. A submodule can be added with the following command:
+Dependencies are managed in the file named `Puppetfile`, which implements
+Librarian Puppet (https://github.com/rodjek/librarian-puppet).
 
-** /!\ Note: Only use HTTPS links when adding submodules /!\ **
-```bash
-git submodule add https://github.com/maestrodev/puppet-wget.git modules/wget
-```
-
-You can pull the latest version of a submodule by calling `git pull` from the
-submodule directory, or from the root for all submodules with:
-
-```
-git submodule foreach git pull origin master
-```
-
-To remove a submodule, do the following:
-```bash
-git submodule deinit modules/mymodule
-git rm --cached modules/mymodule
-rm -rf .git/modules/modules/mymodule
-git commit -m "removed mymodule" .gitmodules
-```
+To add a new dependency, simply add the github repository into the Puppetfile.
+Make sure to **pin** the dependency to a git commit hash, for security reasons.
