@@ -28,7 +28,7 @@ class observer::db {
             }
             exec {
                 'push certificates mappings':
-                    command     => '/usr/bin/curl -XPUT http://localhost:9200/certificates -d @/etc/observer/cert_schema.json; /usr/bin/curl -XPUT http://localhost:9200/connection -d @/etc/observer/conn_schema.json',
+                    command     => '/usr/bin/curl -XPUT http://localhost:9200/observer/; /usr/bin/curl -XPUT http://localhost:9200/observer/_mapping/certificate -d @/etc/observer/cert_schema.json; /usr/bin/curl -XPUT http://localhost:9200/observer/_mapping/connection -d @/etc/observer/conn_schema.json',
                     subscribe   => exec['install-mozilla-tls-observer'],
                     refreshonly => true
             }
