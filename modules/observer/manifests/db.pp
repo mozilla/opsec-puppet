@@ -24,11 +24,11 @@ class observer::db {
                 'tlsobserver':
                     datadir       => '/mnt/esdata/tlsobserver',
                     config        => {'script.groovy.sandbox.enabled'   => 'true' },
-                    init_defaults => {'ES_HEAP_SIZE'                    => '2500M'}
+                    init_defaults => {'ES_HEAP_SIZE'                    => '15G'}
             }
             exec {
                 'push certificates mappings':
-                    command     => '/usr/bin/curl -XPUT http://localhost:9200/certificates -d @/etc/observer/certificates_schema.json',
+                    command     => '/usr/bin/curl -XPUT http://localhost:9200/observer/; /usr/bin/curl -XPUT http://localhost:9200/observer/_mapping/certificate -d @/etc/observer/cert_schema.json; /usr/bin/curl -XPUT http://localhost:9200/observer/_mapping/connection -d @/etc/observer/conn_schema.json',
                     subscribe   => exec['install-mozilla-tls-observer'],
                     refreshonly => true
             }
