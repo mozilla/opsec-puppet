@@ -22,18 +22,21 @@ node /observer-web\d+.use1.opsec.mozilla.com/ {
 node /observer-retriever\d+.use1.opsec.mozilla.com/ {
     include base
     include puppet::agent
-    include observer::retriever
+    include observer::certretriever
+    include observer::tlsretriever
 }
 node 'observer-analyzer1.use1.opsec.mozilla.com' {
     include base
     include puppet::agent
-    include observer::analyzer
+    include observer::certanalyzer
+    include observer::tlsanalyzer
     include observer::mq
 }
 node /observer-analyzer[2-9].use1.opsec.mozilla.com/ {
     include base
     include puppet::agent
-    include observer::analyzer
+    include observer::certanalyzer
+    include observer::tlsanalyzer
 }
 node /observer-db\d+.use1.opsec.mozilla.com/ {
     include base

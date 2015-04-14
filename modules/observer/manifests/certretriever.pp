@@ -3,21 +3,20 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Contributor: Julien Vehent jvehent@mozilla.com [:ulfr]
-class observer::analyzer(
-    $rabbitmq_relay = '127.0.0.1:5672',
-    $elasticsearch_db = '127.0.0.1:9200'
+class observer::certretriever (
+    $rabbitmq_relay = '127.0.0.1:5672'
 ) {
     case $::operatingsystem {
         'Ubuntu': {
             include observer::package
             file {
-                '/etc/observer/analyzer.cfg':
+                '/etc/observer/certretriever.cfg':
                     owner   => 'root',
                     mode    => '0755',
-                    content => template('observer/analyzer.cfg.erb')
+                    content => template('observer/certretriever.cfg.erb')
             }
             service{
-                'tlsobserver-analyzer' :
+                'tlsobserver-certretriever' :
                     require => Class['observer::package'],
                     ensure  => running
             }
