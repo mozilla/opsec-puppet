@@ -1,7 +1,7 @@
 opsec_members:
     jvehent:
         home_dir: /home/jvehent
-        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxdyrhWjr9iwNcOe3PscVjiP5kw1j531MXzYAePqeOcdVam1+iuggV2CwPF9rH3m/Evzbl2+J2M1e1hmONtQEU9EJbt1PbBDafaKQGQsU99ZKRgw6dKe7PEjswNM2FsERTLwUEiOJbDQhTLq4YBn1ZfjDhtfdQe8DHEFmX4GJT0rS+Vw7f2rrDJhN681D1jEqeLvB8HcZKJbxzxRCWo14l/oOm0borpTmvA0gXIrTnMC3eAYMeQs5+ph2jjYjYcz9H5t5tFrYO9A1PRzHq6xPfYNB1a6spc0B+94cTwVn+u8ZmItI95+G+fGxzzRMp4lga+882nHVdLV+FWJbkdL8p
+        ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAACAQDJyIg9+ItXS1jBvxJS++Sc8/J2IYcVGzNWdRTy+88JGO4FoV8hnYokFNqLPWGNZaSD+yZRKrppIRy5Qk7C4ulFoTQomZRJBpI1037H0ELkj/VWBwIu51jOZWYXaBejP7BmjNqEIdlMhoHwMe4lg14rpOIgkFGtNmMwi+mZia1I+sWdo7GG8w0b0qX096wm1z/+AQuqkSiWt2J1bXYgHEzuIB759OhTyMr6+Mydz7LyI6eAbriARVAOjpuckni18Ys42JaYegBUCZwPbHnw/UDh15Ru0Gz+1o9ymyzaq3mj6W3wHVFQbNOOOdqhCze6X3+1hfijlV3GP15iHsdqsJ+GPXOvyf/EfyptlspQEp29mc7hnsqkk0uA4diiJbOvPgFaY+NDNTmtiYg+rcDimrNkKqgtMwavapw0KJzaXuAOuXff85So9I/AM7Gw9iU8TG1Tl5AEv4QaModUpnHzRfroUsoWWQyPuFmeVTPwT0uy5P024voSKHOsEI8h6CGuu8WHEki9eaaaYDdqRT6exbVbc5yAT+GL88Ed8UNSgjbEv7+f146Xp7TLhDnIllFIssa4iZ1+K1Q5rKlTUchXNasB0hvrHU4K37sqf9knbU+9q+gnFXhbdC26sjqAbkeUZZWgjMMx90D8p2MXVG0FgZVW8Nm6p8Vir14yFDMZLFlVmQ==
         ssh_key_type: ssh-rsa
         sudo: true
     gdestuynder:
