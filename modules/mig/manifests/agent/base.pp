@@ -75,7 +75,7 @@ class mig::agent::base(
             }
             exec {
                 'set-relay-uri':
-                    command     => 'sed -i "s/RELAYURITOREPLACE/$(cat /etc/mig/mig_agent_relay_uri)/" /etc/mig/mig-agent.cfg',
+                    command     => 'sed -i "s|RELAYURITOREPLACE|$(cat /etc/mig/mig_agent_relay_uri)|" /etc/mig/mig-agent.cfg',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     subscribe   => [ File['/etc/mig/mig-agent.cfg'] ],
                     before      => [ wget::fetch['mig-agent'] ],
