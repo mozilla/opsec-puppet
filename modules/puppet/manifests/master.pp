@@ -23,7 +23,7 @@ class puppet::master(
                     mode    => 0755,
                     owner   => 'root',
                     group   => 'root',
-                    content => 'puppet:///modules/puppet/update_from_upstream.sh';
+                    source => "puppet:///modules/puppet/update_from_upstream.sh";
                 '/etc/puppet/environments/production':
                     ensure  => directory,
                     mode    => 0755,
