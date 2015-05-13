@@ -54,7 +54,7 @@ class mig::agent::base(
                     source      => "${secretsrepourl}mig_agent_relay_uri",
                     destination => "/etc/mig/mig_agent_relay_uri",
                     timeout     => 0,
-                    before      => [ File['/etc/mig/mig-agent.cfg'] ],
+                    before      => [ Exec['set-relay-uri'] ],
                     verbose     => false;
             }
             file {

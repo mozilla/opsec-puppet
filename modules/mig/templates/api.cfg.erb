@@ -1,0 +1,28 @@
+[authentication]
+    enabled         = <%= @enableauth %>
+    tokenduration   = <%= @tokenduration %>
+
+[server]
+    ip          = "<%= @ip %>"
+    port        = <%= @port %>
+    host        = <%= @host %>
+    baseroute   = <%= @baseroute %>
+
+[postgres]
+    host        = "<%= @dbhost %>"
+    port        = <%= @dbport %>
+    dbname      = "<%= @dbname %>"
+    user        = "<%= @dbuser %>"
+    password    = "REPLACEDBPASSWORD"
+    sslmode     = "<%= @dbsslmode %>"
+    maxconn     = <%= @dbmaxconn %>
+
+[maxmind]
+    path = "<%= @maxmind %>"
+
+[logging]
+    mode    = "syslog"
+    level   = "info"
+    host    = "localhost"
+    port    = 514
+    protocol = "udp"

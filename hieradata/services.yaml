@@ -10,3 +10,24 @@ observer::tlsretriever::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
 mig::agent::base::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agent/"
 mig::agent::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
 mig::agent::base::version: "20150513%2Beb2bbb5.prod"
+
+mig::server::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
+mig::server::base::version: "20150513%2Bbbf462f.prod"
+
+mig::server::api::enableauth: "on"
+mig::server::api::tokenduration: "10m"
+mig::server::api::ip: "0.0.0.0"
+mig::server::api::port: "1664"
+mig::server::api::host: "https://api.mig.mozilla.org"
+mig::server::api::baseroute: "/api/v1"
+mig::server::api::dbhost: ""
+mig::server::api::dbport: "5432"
+mig::server::api::dbname: "mig"
+mig::server::api::dbuser: "migapi"
+mig::server::api::dbsslmode: "require"
+mig::server::api::dbmaxconn: "10"
+mig::server::api::maxmind: "/etc/mig/GeoIP2-City.mmdb"
+mig::server::api::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
+
+
+

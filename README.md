@@ -19,8 +19,8 @@ sudo apt-get update && sudo apt-get -y install puppet && sudo puppet agent --ena
 
 Set the hostname of the instances:
 ```bash
-sudo echo "myhostname" > /etc/hostname
-sudo echo "1.2.3.4 myhostname.mysubdomain myhostname" >> /etc/hosts
+echo "myhostname" | sudo tee /etc/hostname
+echo "1.2.3.4 myhostname.mysubdomain myhostname" | sudo tee -a /etc/hosts
 sudo hostname -F /etc/hostname
 ```
 
