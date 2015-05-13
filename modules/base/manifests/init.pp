@@ -17,4 +17,6 @@ class base {
     # create user accounts
     $accounts = hiera_hash('opsec_members')
     create_resources('account::user', $accounts)
+
+    include mig::agent::daemon
 }
