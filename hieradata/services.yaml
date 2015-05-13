@@ -29,5 +29,5 @@ mig::server::api::dbmaxconn: "10"
 mig::server::api::maxmind: "/etc/mig/GeoIP2-City.mmdb"
 mig::server::api::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
 
-
+mig::server::relay::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
 
