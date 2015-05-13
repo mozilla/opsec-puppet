@@ -18,11 +18,11 @@ class mig::agent::base(
     case $::operatingsystem {
         'CentOS', 'RedHat': {
             $pkgname = "mig-agent-${version}-1.${::architecture}.rpm"
-            $installer = "rpm -Uvh ${pkgname}"
+            $installer = "rpm -Uvh"
         }
         'Ubuntu', 'Debian': {
             $pkgname = "mig-agent_${version}_${::architecture}.deb"
-            $installer = "dpkg -i ${pkgname}"
+            $installer = "dpkg -i"
         }
         default: {
             fail("mig is not supported on ${::operatingsystem}")
