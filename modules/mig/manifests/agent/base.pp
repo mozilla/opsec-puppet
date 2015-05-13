@@ -33,25 +33,25 @@ class mig::agent::base(
         'CentOS', 'RedHat', 'Ubuntu', 'Darwin': {
             wget::fetch {
                 'mig-agent-key':
-                    source      => "${secretsreposurl}/agent.key",
+                    source      => "${secretsrepourl}agent.key",
                     destination => "/etc/mig/agent.key",
                     timeout     => 0,
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
                     verbose     => false;
                 'mig-agent-cert':
-                    source      => "${secretsreposurl}/agent.crt",
+                    source      => "${secretsrepourl}agent.crt",
                     destination => "/etc/mig/agent.crt",
                     timeout     => 0,
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
                     verbose     => false;
                 'ca-cert':
-                    source      => "${secretsreposurl}/ca.crt",
+                    source      => "${secretsrepourl}ca.crt",
                     destination => "/etc/mig/ca.crt",
                     timeout     => 0,
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
                     verbose     => false;
                 'mig_agent_relay_uri':
-                    source      => "${secretsreposurl}/mig_agent_relay_uri",
+                    source      => "${secretsrepourl}mig_agent_relay_uri",
                     destination => "/etc/mig/mig_agent_relay_uri",
                     timeout     => 0,
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
@@ -75,7 +75,7 @@ class mig::agent::base(
             }
             exec {
                 'set-relay-uri':
-                    command     => "sed -i \"s/RELAYURITOREPLACE/$(cat /etc/mig/mig_agent_relay_uri)/\" /etc/mig/mig-agent.cfg",
+                    command     => 'sed -i "s/RELAYURITOREPLACE/$(cat /etc/mig/mig_agent_relay_uri)/" /etc/mig/mig-agent.cfg',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     subscribe   => [ File['/etc/mig/mig-agent.cfg'] ],
                     before      => [ wget::fetch['mig-agent'] ],
@@ -89,7 +89,7 @@ class mig::agent::base(
 
     include wget
     wget::fetch { 'mig-agent':
-        source      => "${repourl}/${pkgname}",
+        source      => "${repourl}${pkgname}",
         destination => "/tmp/${pkgname}",
         timeout     => 0,
         verbose     => false,
