@@ -12,6 +12,8 @@ class mig::agent::base(
     $version,
     $secretsrepourl
 ) {
+    include mig::common
+    include wget
     # package installation is done via a simple wget of the package file,
     # followed by the appropriate rpm/dpkg command. Installation does not
     # start a new agent. This is done in mig::agent::daemon only.
@@ -36,36 +38,31 @@ class mig::agent::base(
                     source      => "${secretsrepourl}agent.key",
                     destination => "/etc/mig/agent.key",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
+                    require     => [ Class['mig::common'] ],
                     verbose     => false;
                 'mig-agent-cert':
                     source      => "${secretsrepourl}agent.crt",
                     destination => "/etc/mig/agent.crt",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
-                    verbose     => false;
-                'ca-cert':
-                    source      => "${secretsrepourl}ca.crt",
-                    destination => "/etc/mig/ca.crt",
-                    timeout     => 0,
-                    before      => [ File['/etc/mig/mig-agent.cfg'] ],
+                    require     => [ Class['mig::common'] ],
                     verbose     => false;
                 'mig_agent_relay_uri':
                     source      => "${secretsrepourl}mig_agent_relay_uri",
                     destination => "/etc/mig/mig_agent_relay_uri",
                     timeout     => 0,
-                    before      => [ File['/etc/mig/mig-agent.cfg'] ],
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
+                    before      => [ Exec['set-relay-uri'] ],
+                    require     => [ Class['mig::common'] ],
                     verbose     => false;
             }
             file {
-                '/etc/mig/':
-                    ensure => 'directory',
-                    owner => 'root',
-                    mode => 755,
-                    before => [ wget::fetch['mig-agent'],
-                                wget::fetch['mig-agent-key'],
-                                wget::fetch['mig-agent-cert'],
-                                wget::fetch['ca-cert']];
                 '/etc/mig/mig-agent.cfg':
                     content => template('mig/mig-agent.cfg.erb'),
                     show_diff => false,
@@ -87,7 +84,6 @@ class mig::agent::base(
         }
     }
 
-    include wget
     wget::fetch { 'mig-agent':
         source      => "${repourl}${pkgname}",
         destination => "/tmp/${pkgname}",

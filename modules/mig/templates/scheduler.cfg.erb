@@ -1,0 +1,50 @@
+[agent]
+    timeout             = "<%= @agttimeout %>"
+    heartbeatfreq       = "<%= @agtheartbeatfreq %>"
+    whitelist           = "<%= @agtwhitelist %>"
+    detectmultiagents   = <%= @detectmultiagents %>
+    killdupagents       = <%= @killdupagents %>
+
+[collector]
+    freq = "<%= @collectorfreq %>"
+
+[periodic]
+    freq                = "<%= @periodicfreq %>"
+    deleteafter         = "<%= @deleteafter %>"
+    queuescleanupfreq   = "<%= @qcleanupfreq %>"
+
+[directories]
+    spool   = "<%= @dirspool %>"
+    tmp     = "<%= @dirtmp %>"
+
+[postgres]
+    host        = "<%= @dbhost %>"
+    port        = <%= @dbport %>
+    dbname      = "<%= @dbname %>"
+    user        = "<%= @dbuser %>"
+    password    = "REPLACEDBPASSWORD"
+    sslmode     = "<%= @dbsslmode %>"
+    maxconn     = <%= @dbmaxconn %>
+
+[mq]
+    host    = "<%= @mqhost %>"
+    port    = <%= @mqport %>
+    user    = "<%= @mquser %>"
+    pass    = "REPLACEMQPASSWORD"
+    vhost   = "<%= @mqvhost %>"
+    usetls  = <%= @mqtls %>
+    cacert  = "<%= @mqcacert %>"
+    tlscert = "<%= @mqclicert %>"
+    tlskey  = "<%= @mqclikey %>"
+    timeout = "10s"
+
+[logging]
+    mode    = "syslog"
+    level   = "info"
+    host    = "localhost"
+    port    = 514
+    protocol = "udp"
+
+[debug]
+    heartbeats = false
+
