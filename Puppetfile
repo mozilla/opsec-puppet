@@ -41,3 +41,7 @@ mod 'puppetlabs-firewall',
 mod 'puppetlabs-rabbitmq',
     :git => 'https://github.com/puppetlabs/puppetlabs-rabbitmq.git',
     :ref => '4d4c9efab218050b84282924824388bdbf16b32d'
+
+mod 'arioch/puppet-ulimit',
+    :git => 'https://github.com/arioch/puppet-ulimit.git',
+    :ref => '529d07e77d27e86c52c5c78d3b1f2386cafbcc8e'
