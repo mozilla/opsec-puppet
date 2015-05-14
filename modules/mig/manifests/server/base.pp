@@ -5,6 +5,7 @@ class mig::server::base(
     $repourl,
     $version
 ) {
+    include mig::common
     user {
         'mig':
             ensure  =>  'present',
@@ -20,22 +21,22 @@ class mig::server::base(
             $installer = "dpkg -i"
         }
         default: {
-            fail("mig is not supported on ${::operatingsystem}")
+            fail("mig server is not supported on ${::operatingsystem}")
         }
     }
     include wget
     wget::fetch {
-        'api':
+        'serverpkg':
             source      => "${repourl}${pkgname}",
             destination => "/tmp/${pkgname}",
             timeout     => 0,
-            verbose     => false,
+            verbose     => false;
     }
     exec {
-        'install-mig-api':
+        'install-mig-server':
             command     => "${installer} /tmp/${pkgname}",
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-            subscribe   => wget::fetch['api'],
+            subscribe   => wget::fetch['serverpkg'],
             refreshonly => true
     }
 }

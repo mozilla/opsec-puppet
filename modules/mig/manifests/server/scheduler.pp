@@ -77,14 +77,6 @@ class mig::server::scheduler(
                     before      => [ File['/etc/mig/scheduler.cfg'] ],
                     require     => [ Class['mig::server::base'] ],
                     verbose     => false;
-                'ca-cert-scheduler':
-                    source      => "${secretsrepourl}ca.crt",
-                    destination => "/etc/mig/ca.crt",
-                    timeout     => 0,
-                    mode        => 600,
-                    cache_dir   => '/var/tmp/',
-                    before      => [ File['/etc/mig/scheduler.cfg'] ],
-                    require     => [ Class['mig::server::base'] ];
             }
             exec {
                 'set-scheduler-db-password':

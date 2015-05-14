@@ -7,6 +7,8 @@ observer::tlsanalyzer::elasticsearch_db: "172.19.2.218:9200"
 observer::certretriever::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
 observer::tlsretriever::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
 
+mig::common::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agent/"
+
 mig::agent::base::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agent/"
 mig::agent::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
 mig::agent::base::version: "20150513%2Beb2bbb5.prod"
