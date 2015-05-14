@@ -36,24 +36,32 @@ class mig::agent::base(
                     source      => "${secretsrepourl}agent.key",
                     destination => "/etc/mig/agent.key",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
                     verbose     => false;
                 'mig-agent-cert':
                     source      => "${secretsrepourl}agent.crt",
                     destination => "/etc/mig/agent.crt",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
                     verbose     => false;
                 'ca-cert':
                     source      => "${secretsrepourl}ca.crt",
                     destination => "/etc/mig/ca.crt",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/mig-agent.cfg'] ],
                     verbose     => false;
                 'mig_agent_relay_uri':
                     source      => "${secretsrepourl}mig_agent_relay_uri",
                     destination => "/etc/mig/mig_agent_relay_uri",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ Exec['set-relay-uri'] ],
                     verbose     => false;
             }

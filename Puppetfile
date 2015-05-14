@@ -24,7 +24,7 @@ mod 'jvehent-sysctl',
 
 mod 'maestrodev-wget',
     :git => 'https://github.com/maestrodev/puppet-wget.git',
-    :ref => '33a60ee9565590b3be0e5ead804f4feabd8002da'
+    :ref => 'b83b722f8703f587513136ecfa9d8bfcaa1d76a5'
 
 mod 'elasticsearch-elasticsearch',
     :git => 'https://github.com/elasticsearch/puppet-elasticsearch.git',

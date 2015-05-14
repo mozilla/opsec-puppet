@@ -46,6 +46,7 @@ class mig::server::scheduler(
                     destination => "/etc/mig/scheduler-db-password",
                     timeout     => 0,
                     mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ Exec['set-scheduler-db-password'] ],
                     require     => [ Class['mig::server::base'] ],
                     verbose     => false;
@@ -54,6 +55,7 @@ class mig::server::scheduler(
                     destination => "/etc/mig/scheduler-mq-password",
                     timeout     => 0,
                     mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ Exec['set-scheduler-mq-password'] ],
                     require     => [ Class['mig::server::base'] ],
                     verbose     => false;
@@ -62,6 +64,7 @@ class mig::server::scheduler(
                     destination => "/etc/mig/scheduler.key",
                     timeout     => 0,
                     mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/scheduler.cfg'] ],
                     require     => [ Class['mig::server::base'] ],
                     verbose     => false;
@@ -70,6 +73,7 @@ class mig::server::scheduler(
                     destination => "/etc/mig/scheduler.crt",
                     timeout     => 0,
                     mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/scheduler.cfg'] ],
                     require     => [ Class['mig::server::base'] ],
                     verbose     => false;
@@ -78,6 +82,7 @@ class mig::server::scheduler(
                     destination => "/etc/mig/ca.crt",
                     timeout     => 0,
                     mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ File['/etc/mig/scheduler.cfg'] ],
                     require     => [ Class['mig::server::base'] ];
             }

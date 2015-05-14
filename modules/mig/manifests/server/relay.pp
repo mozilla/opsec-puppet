@@ -20,6 +20,8 @@ class mig::server::relay (
             source      => "${secretsrepourl}rabbitmq-creds",
             destination => "/etc/rabbitmq/creds",
             timeout     => 0,
+            mode        => 600,
+            cache_dir   => '/var/tmp/',
             before      => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             require     => [ File['/etc/rabbitmq'] ],
             verbose     => false;
@@ -27,6 +29,8 @@ class mig::server::relay (
             source      => "${secretsrepourl}erlang-cookie",
             destination => "/var/lib/rabbitmq/.erlang.cookie",
             timeout     => 0,
+            mode        => 600,
+            cache_dir   => '/var/tmp/',
             before      => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             require     => [ File['/etc/rabbitmq'] ],
             verbose     => false;
@@ -34,6 +38,8 @@ class mig::server::relay (
             source      => "${secretsrepourl}relay.key",
             destination => "/etc/rabbitmq/relay.key",
             timeout     => 0,
+            mode        => 600,
+            cache_dir   => '/var/tmp/',
             before      => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             require     => [ File['/etc/rabbitmq'] ],
             verbose     => false;
@@ -41,6 +47,8 @@ class mig::server::relay (
             source      => "${secretsrepourl}relay.crt",
             destination => "/etc/rabbitmq/relay.crt",
             timeout     => 0,
+            mode        => 600,
+            cache_dir   => '/var/tmp/',
             before      => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             require     => [ File['/etc/rabbitmq'] ],
             verbose     => false;
@@ -48,6 +56,8 @@ class mig::server::relay (
             source      => "${secretsrepourl}ca.crt",
             destination => "/etc/rabbitmq/ca.crt",
             timeout     => 0,
+            mode        => 600,
+            cache_dir   => '/var/tmp/',
             before      => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             require     => [ File['/etc/rabbitmq'] ],
             verbose     => false;

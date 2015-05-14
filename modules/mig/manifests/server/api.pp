@@ -23,11 +23,11 @@ class mig::server::api(
 
             file {
                 '/etc/mig/api.cfg':
-                    content => template('mig/api.cfg.erb'),
-                    show_diff => false,
-                    owner => 'root',
-                    mode => 600,
-                    require => [ Class['mig::server::base'] ];
+                    content     => template('mig/api.cfg.erb'),
+                    show_diff   => false,
+                    owner       => 'root',
+                    mode        => 600,
+                    require     => [ Class['mig::server::base'] ];
             }
 
             wget::fetch {
@@ -35,6 +35,8 @@ class mig::server::api(
                     source      => "${secretsrepourl}api-db-password",
                     destination => "/etc/mig/api-db-password",
                     timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
                     before      => [ Exec['set-api-password'] ],
                     verbose     => false;
             }
