@@ -19,9 +19,8 @@ sudo apt-get update && sudo apt-get -y install puppet && sudo puppet agent --ena
 
 Set the hostname of the instances:
 ```bash
-echo "myhostname" | sudo tee /etc/hostname
-echo "1.2.3.4 myhostname.mysubdomain myhostname" | sudo tee -a /etc/hosts
-sudo hostname -F /etc/hostname
+sudo hostnamectl set-hostname myhost
+echo "$(ip a show eth0 |grep inet|grep -Po "([0-9]{1,3}\.){3}[0-9]{1,3}"|head -1) myhost.mydomain myhost" | sudo tee -a /etc/hosts
 ```
 
 Bootstrap puppet:
@@ -73,3 +72,25 @@ Librarian Puppet (https://github.com/rodjek/librarian-puppet).
 
 To add a new dependency, simply add the github repository into the Puppetfile.
 Make sure to **pin** the dependency to a git commit hash, for security reasons.
+
+### Secrets
+
+To deploy secrets (passwords, keys, ...), upload a copy of the secret in the S3
+bucket named `mozopsecsecrets1`. Access to the bucket is limited to hosts in the
+`production` VPC.
+
+In puppet, you can retrieve your secret using `wget::fetch` as follow:
+```puppet
+wget::fetch {
+    'mysecret':
+        source      => "${secretsrepourl}mysecret",
+        destination => "/etc/mysecret",
+        timeout     => 0,
+        mode        => 600,
+        cache_dir   => '/var/tmp/',
+        verbose     => false;
+```
+
+Templating a secret requires a bit of a hack, since the secret is in a file and
+now a puppet variable. You can get creative and execute a `sed -i` of the secret
+on the configuration file. Check out the `mig` module for ideas.
