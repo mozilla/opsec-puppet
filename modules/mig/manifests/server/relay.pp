@@ -15,6 +15,42 @@ class mig::server::relay (
         '/etc/rabbitmq':
             ensure => directory;
     }
+
+    # Increase the number of file descriptors rabbitmq can hold
+    include ulimit
+    ulimit::rule {
+        'rabbitmq_nofile_soft':
+            ulimit_domain => 'rabbitmq',
+            ulimit_type   => 'soft',
+            ulimit_item   => 'nofile',
+            ulimit_value  => '131072';
+        'rabbitmq_nofile_hard':
+            ulimit_domain => 'rabbitmq',
+            ulimit_type   => 'hard',
+            ulimit_item   => 'nofile',
+            ulimit_value  => '131072';
+        'root_nofile_soft':
+            ulimit_domain => 'root',
+            ulimit_type   => 'soft',
+            ulimit_item   => 'nofile',
+            ulimit_value  => '131072';
+        'root_nofile_hard':
+            ulimit_domain => 'root',
+            ulimit_type   => 'hard',
+            ulimit_item   => 'nofile',
+            ulimit_value  => '131072';
+    }
+    # on debian/ubuntu, strangely, the rabbitmq package insists in
+    # ignoring ulimit and runs ulimit -n from /etc/default/rabbitmq-server instead
+    case $::operatingsystem {
+        'Ubuntu', 'Debian': {
+            file {
+                '/etc/default/rabbitmq-server':
+                    content => 'ulimit -n 131072';
+            }
+        }
+    }
+
     wget::fetch {
         'rabbitmq-creds':
             source      => "${secretsrepourl}rabbitmq-creds",
@@ -64,10 +100,11 @@ class mig::server::relay (
     }
     file {
         '/etc/rabbitmq/enabled_plugins':
-            before      => [ File['/etc/rabbitmq/rabbitmq.config'] ],
+            before  => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             content => "[rabbitmq_management].";
         '/etc/rabbitmq/rabbitmq.config':
             content => template('mig/rabbitmq.config.erb');
+
     }
     exec {
         'set-rabbitmq-permissions':
@@ -83,7 +120,7 @@ class mig::server::relay (
             command     => "service rabbitmq-server restart",
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             refreshonly => true,
-            subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ];
+            subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'], ulimit::rule['root_nofile_hard'] ];
 
         'create-rabbitmq-env':
             command     => 'sudo rabbitmqctl add_user admin $(grep ^admin /etc/rabbitmq/creds|cut -d ":" -f2);

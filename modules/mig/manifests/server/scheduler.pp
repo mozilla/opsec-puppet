@@ -98,6 +98,7 @@ class mig::server::scheduler(
             service {
                 'mig-scheduler':
                     enable => true,
+                    ensure => running,
                     require => [ File['/etc/mig/scheduler.cfg'] ];
             }
         }
