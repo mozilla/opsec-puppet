@@ -39,6 +39,14 @@ class mig::server::api(
                     cache_dir   => '/var/tmp/',
                     before      => [ Exec['set-api-password'] ],
                     verbose     => false;
+                'mig-api-geoip':
+                    source      => "${secretsrepourl}GeoIP2-City.mmdb",
+                    destination => "/etc/mig/GeoIP2-City.mmdb",
+                    timeout     => 0,
+                    mode        => 600,
+                    cache_dir   => '/var/tmp/',
+                    before      => [ Service['mig-api'] ],
+                    verbose     => false;
             }
 
             exec {
@@ -57,6 +65,7 @@ class mig::server::api(
             service {
                 'mig-api':
                     enable => true,
+                    ensure => running,
                     require => [ File['/etc/mig/api.cfg'] ];
             }
         }
