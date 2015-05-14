@@ -70,10 +70,21 @@ class mig::server::relay (
             content => template('mig/rabbitmq.config.erb');
     }
     exec {
+        'set-rabbitmq-permissions':
+            command     => 'chown rabbitmq /var/lib/rabbitmq/.erlang.cookie;
+                            chmod 600 /var/lib/rabbitmq/.erlang.cookie;
+                            chown rabbitmq /etc/rabbitmq/ -R;
+                            chmod 640 /etc/rabbitmq/* -R',
+            path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            require     => [ File['/etc/rabbitmq/rabbitmq.config'] ],
+            before      => [ Exec['restart-rabbitmq'] ];
+
         'restart-rabbitmq':
             command     => "service rabbitmq-server restart",
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            refreshonly => true,
             subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ];
+
         'create-rabbitmq-env':
             command     => 'sudo rabbitmqctl add_user admin $(grep ^admin /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl set_user_tags admin administrator;
@@ -85,10 +96,16 @@ class mig::server::relay (
                             sudo rabbitmqctl set_permissions -p mig agent "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
                             sudo rabbitmqctl set_permissions -p mig worker "^migevent\..*$" "^migevent(|\..*)$" "^migevent(|\..*)$";',
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-            subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ];
+            subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ],
+            require     => [ Exec['set-rabbitmq-permissions'] ];
+
         'mirror-all-queues':
             command     => 'sudo rabbitmqctl -p mig set_policy mig-mirror-all "^mig(|event)\." \'{"ha-mode":"all"}\'',
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             require     => [ Exec['create-rabbitmq-env'] ];
+    }
+    service {
+        'rabbitmq-server':
+            ensure => running
     }
 }
