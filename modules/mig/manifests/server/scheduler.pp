@@ -30,13 +30,13 @@ class mig::server::scheduler(
     $secretsrepourl
 ) {
     case $::operatingsystem {
-        'Ubuntu': {
+        'CentOS', 'RedHat', 'Ubuntu', 'Debian': {
             include mig::server::base
             file {
                 '/etc/mig/scheduler.cfg':
                     content => template('mig/scheduler.cfg.erb'),
                     show_diff => false,
-                    owner => 'root',
+                    owner => 'mig',
                     mode => 600,
                     require => [ Class['mig::server::base'] ];
             }
@@ -86,6 +86,11 @@ class mig::server::scheduler(
                     before      => [ Service['mig-scheduler'] ];
                 'set-scheduler-mq-password':
                     command     => 'sed -i "s|REPLACEMQPASSWORD|$(cat /etc/mig/scheduler-mq-password)|" /etc/mig/scheduler.cfg; rm /etc/mig/scheduler-mq-password',
+                    path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    require     => [ File['/etc/mig/scheduler.cfg'] ],
+                    before      => [ Service['mig-scheduler'] ];
+                'set-scheduler-permissions':
+                    command     => 'chown mig /etc/mig -R; chmod 640 /etc/mig -R',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     require     => [ File['/etc/mig/scheduler.cfg'] ],
                     before      => [ Service['mig-scheduler'] ];
