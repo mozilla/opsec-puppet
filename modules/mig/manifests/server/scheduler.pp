@@ -90,7 +90,7 @@ class mig::server::scheduler(
                     require     => [ File['/etc/mig/scheduler.cfg'] ],
                     before      => [ Service['mig-scheduler'] ];
                 'set-scheduler-permissions':
-                    command     => 'chown mig /etc/mig -R; chmod 640 /etc/mig -R',
+                    command     => 'chown mig /etc/mig -R; chmod 640 /etc/mig/* -R',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     require     => [ File['/etc/mig/scheduler.cfg'] ],
                     before      => [ Service['mig-scheduler'] ];

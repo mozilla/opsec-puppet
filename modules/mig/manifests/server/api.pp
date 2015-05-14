@@ -48,7 +48,7 @@ class mig::server::api(
                     require     => [ File['/etc/mig/api.cfg'] ],
                     before      => [ Service['mig-api'] ];
                 'set-api-permissions':
-                    command     => 'chown mig /etc/mig -R; chmod 640 /etc/mig -R',
+                    command     => 'chown mig /etc/mig -R; chmod 640 /etc/mig/* -R',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     require     => [ File['/etc/mig/api.cfg'] ],
                     before      => [ Service['mig-api'] ];
