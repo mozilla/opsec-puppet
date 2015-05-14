@@ -87,7 +87,7 @@ class mig::server::relay (
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ];
         'mirror-all-queues':
-            command     => 'sudo rabbitmqctl -p mig set_policy mig-mirror-all "^mig\." \'{"ha-mode":"all"}\'',
+            command     => 'sudo rabbitmqctl -p mig set_policy mig-mirror-all "^mig(|event)\." \'{"ha-mode":"all"}\'',
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             require     => [ Exec['create-rabbitmq-env'] ];
     }
