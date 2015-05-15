@@ -45,7 +45,7 @@ class mig::server::baseworker(
             }
             exec {
                 'set-worker-permissions':
-                    command     => 'chown mig /etc/mig -R; chown 640 /etc/mig/* -R',
+                    command     => 'chown mig /etc/mig -R; chmod 640 /etc/mig/* -R',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     require     => [ wget::fetch['mig-worker-mozdef-password'],
                                      wget::fetch['mig-worker-mq-password'],
