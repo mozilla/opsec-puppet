@@ -38,4 +38,4 @@ disabled_users:
     ec2-user:
         ensure: absent
     jstevensen:
-        ensure: absent
+        ensure: purge
