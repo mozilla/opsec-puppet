@@ -7,6 +7,11 @@ class observer::package (
     $url,
     $version
 ) {
+    user {
+        'observer':
+            ensure  =>  'present',
+            system  =>  true;
+    }
     case $::operatingsystem {
         'Ubuntu': {
             include wget

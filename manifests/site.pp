@@ -38,6 +38,11 @@ node /observer-analyzer[2-9].use1.opsec.mozilla.com/ {
     include observer::certanalyzer
     include observer::tlsanalyzer
 }
+node /observer-trigger\d+.use1.opsec.mozilla.com/ {
+    include base
+    include puppet::agent
+    include observer::trigger
+}
 node /observer-db\d+.use1.opsec.mozilla.com/ {
     include base
     include puppet::agent

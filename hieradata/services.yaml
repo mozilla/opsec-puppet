@@ -1,12 +1,22 @@
-observer::package::url: "https://s3.amazonaws.com/mozopsecrepo1/mozilla-tls-observer_20150519%2B53dedb6.prod_amd64.deb"
-observer::package::version: "20150519+53dedb6.prod"
-observer::certanalyzer::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
+# -------- TLS Observatory -------------
+observer::package::url: "https://s3.amazonaws.com/mozopsecrepo1/mozilla-tls-observer_20150519%2B119e3f1.prod_amd64.deb"
+observer::package::version: "20150519+119e3f1.prod"
+
 observer::tlsanalyzer::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
-observer::certanalyzer::elasticsearch_db: "172.19.2.218:9200"
 observer::tlsanalyzer::elasticsearch_db: "172.19.2.218:9200"
+
+observer::certanalyzer::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
+observer::certanalyzer::elasticsearch_db: "172.19.2.218:9200"
+
 observer::certretriever::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
+
 observer::tlsretriever::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
 
+observer::trigger::elasticsearch_db: "172.19.2.218:9200"
+observer::trigger::rabbitmq_relay: "amqp://guest:guest@172.19.1.98:5672/"
+observer::trigger::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/observer/"
+
+# ------------ Mozilla InvestiGator ---------------------
 mig::common::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agent/"
 
 mig::agent::base::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agent/"
