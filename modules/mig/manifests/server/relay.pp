@@ -126,11 +126,27 @@ class mig::server::relay (
             command     => 'sudo rabbitmqctl add_user admin $(grep ^admin /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl set_user_tags admin administrator;
                             sudo rabbitmqctl add_user scheduler $(grep ^scheduler /etc/rabbitmq/creds|cut -d ":" -f2);
-                            sudo rabbitmqctl add_user agent $(grep ^agent /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-generic $(grep ^agent-generic: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-it $(grep ^agent-it: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-it-nubis $(grep ^agent-it-nubis: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-releng $(grep ^agent-releng: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-foundation $(grep ^agent-foundation: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-fxos-automation $(grep ^agent-fxos-automation: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-opsec $(grep ^agent-opsec: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-moz-opsec $(grep ^agent-moz-opsec: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-services $(grep ^agent-services: /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl add_user worker $(grep ^worker /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl add_vhost mig;
                             sudo rabbitmqctl set_permissions -p mig scheduler "^mig(|(event|\.agt)(|\..*))$" "^mig(|event(|\..*)|\.(agt\.(heartbeats|results)))$" "^mig(|event(|\..*)|\.(agt\.(heartbeats|results)))$";
-                            sudo rabbitmqctl set_permissions -p mig agent "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-generic "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-it "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-it-nubis "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-releng "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-foundation "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-fxos-automation "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-opsec "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-moz-opsec "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-services "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
                             sudo rabbitmqctl set_permissions -p mig worker "^migevent\..*$" "^migevent(|\..*)$" "^migevent(|\..*)$";',
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ],
