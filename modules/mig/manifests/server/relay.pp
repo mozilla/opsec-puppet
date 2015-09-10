@@ -126,18 +126,32 @@ class mig::server::relay (
             command     => 'sudo rabbitmqctl add_user admin $(grep ^admin /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl set_user_tags admin administrator;
                             sudo rabbitmqctl add_user scheduler $(grep ^scheduler /etc/rabbitmq/creds|cut -d ":" -f2);
-                            sudo rabbitmqctl add_user agent $(grep ^agent /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-it $(grep ^agent-it: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-it-nubis $(grep ^agent-it-nubis: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-releng $(grep ^agent-releng: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-fxos-automation $(grep ^agent-fxos-automation: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-services $(grep ^agent-services: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-opsec $(grep ^agent-opsec: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-moz-opsec $(grep ^agent-moz-opsec: /etc/rabbitmq/creds|cut -d ":" -f2);
+                            sudo rabbitmqctl add_user agent-foundation $(grep ^agent-foundation: /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl add_user worker $(grep ^worker /etc/rabbitmq/creds|cut -d ":" -f2);
                             sudo rabbitmqctl add_vhost mig;
-                            sudo rabbitmqctl set_permissions -p mig scheduler "^mig(|(event|\.agt)(|\..*))$" "^mig(|event(|\..*)|\.(agt\.(heartbeats|results)))$" "^mig(|event(|\..*)|\.(agt\.(heartbeats|results)))$";
-                            sudo rabbitmqctl set_permissions -p mig agent "^mig\.agt\.(linux|windows|darwin)\..*$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$" "^mig(|\.agt\.(linux|windows|darwin)\..*)$";
-                            sudo rabbitmqctl set_permissions -p mig worker "^migevent\..*$" "^migevent(|\..*)$" "^migevent(|\..*)$";',
+                            sudo rabbitmqctl set_permissions -p mig scheduler "^(toagents|toschedulers|toworkers|mig\.agt\..*)$" "^(toagents|toworkers|mig\.agt\.(heartbeats|results))$" "^(toagents|toschedulers|toworkers|mig\.agt\.(heartbeats|results))$";
+                            sudo rabbitmqctl set_permissions -p mig agent-it "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-it-nubis "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-releng "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-fxos-automation "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-services "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-opsec "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-moz-opsec "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig agent-foundation "^mig\.agt\..*$" "^(toschedulers|mig\.agt\..*)$" "^(toagents|mig\.agt\..*)$";
+                            sudo rabbitmqctl set_permissions -p mig worker "^migevent\..*$" "^migevent(|\..*)$" "^(toworkers|migevent\..*)$";',
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             subscribe   => [ File['/etc/rabbitmq/rabbitmq.config'] ],
             require     => [ Exec['set-rabbitmq-permissions'] ];
 
         'mirror-all-queues':
-            command     => 'sudo rabbitmqctl -p mig set_policy mig-mirror-all "^mig(|event)\." \'{"ha-mode":"all"}\'',
+            command     => 'sudo rabbitmqctl -p mig set_policy mig-mirror-all "^(toschedulers|toagents|toworkers|mig(|event))\." \'{"ha-mode":"all"}\'',
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             require     => [ Exec['create-rabbitmq-env'] ];
     }
