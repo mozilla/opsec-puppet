@@ -4,6 +4,12 @@ class base {
         ['ntp', 'htop']:
             ensure => latest
     }
+    service {
+        'ntp':
+            ensure => running,
+            enable => true,
+            require => [ Package['ntp'] ];
+    }
     # centos and redhat specific packages
     case $::operatingsystem {
         'CentOS', 'RedHat': {
