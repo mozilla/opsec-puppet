@@ -9,11 +9,19 @@ class nat {
             value => '0';
     }
     firewall {
-        '001 Outbound NAT':
+        '001 Outbound NAT TCP':
             ensure   => present,
             chain    => 'POSTROUTING',
             jump     => 'MASQUERADE',
             table    => 'nat',
-            outiface => 'eth0'
-    }
+            proto     => 'tcp',
+            outiface => 'eth0';
+        '002 Outbound NAT UDP':
+            ensure   => present,
+            chain    => 'POSTROUTING',
+            jump     => 'MASQUERADE',
+            table    => 'nat',
+            proto     => 'udp',
+            outiface => 'eth0';
+   }
 }
