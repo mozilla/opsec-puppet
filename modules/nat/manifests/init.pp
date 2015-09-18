@@ -15,13 +15,13 @@ class nat {
             jump     => 'MASQUERADE',
             table    => 'nat',
             proto     => 'tcp',
-            outiface => 'eth0'
+            outiface => 'eth0';
         '002 Outbound NAT UDP':
             ensure   => present,
             chain    => 'POSTROUTING',
             jump     => 'MASQUERADE',
             table    => 'nat',
             proto     => 'udp',
-            outiface => 'eth0'
+            outiface => 'eth0';
    }
 }
