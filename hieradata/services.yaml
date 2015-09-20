@@ -24,7 +24,7 @@ mig::agent::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
 mig::agent::base::version: "20150910%2B3cf667c.prod"
 
 mig::server::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
-mig::server::base::version: "20150920%2Be53cc5c.prod"
+mig::server::base::version: "20150920%2Bfed9f5f.prod"
 
 mig::server::api::enableauth: "on"
 mig::server::api::tokenduration: "10m"
