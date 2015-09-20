@@ -24,7 +24,7 @@ mig::agent::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
 mig::agent::base::version: "20150910%2B3cf667c.prod"
 
 mig::server::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
-mig::server::base::version: "20150910%2B37e52e1.prod"
+mig::server::base::version: "20150920%2Be53cc5c.prod"
 
 mig::server::api::enableauth: "on"
 mig::server::api::tokenduration: "10m"
@@ -37,7 +37,7 @@ mig::server::api::dbport: "5432"
 mig::server::api::dbname: "mig"
 mig::server::api::dbuser: "migapi"
 mig::server::api::dbsslmode: "require"
-mig::server::api::dbmaxconn: "10"
+mig::server::api::dbmaxconn: "100"
 mig::server::api::maxmind: "/etc/mig/GeoIP2-City.mmdb"
 mig::server::api::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
 
