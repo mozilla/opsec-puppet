@@ -46,7 +46,7 @@ mig::server::relay::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/m
 mig::server::scheduler::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
 mig::server::scheduler::agttimeout: "12h"
 mig::server::scheduler::agtheartbeatfreq: "30s"
-mig::server::scheduler::agtwhitelist: "/etc/mig/agents_whitelist.txt"
+mig::server::scheduler::agtwhitelist: ""
 mig::server::scheduler::detectmultiagents: "on"
 mig::server::scheduler::killdupagents: "on"
 mig::server::scheduler::collectorfreq: "1s"
