@@ -24,7 +24,7 @@ mig::agent::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
 mig::agent::base::version: "20150910%2B3cf667c.prod"
 
 mig::server::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
-mig::server::base::version: "20150930-0.1ea7ecd.prod"
+mig::server::base::version: "20151106-0.f0c4460.prod"
 
 mig::server::api::enableauth: "on"
 mig::server::api::tokenduration: "10m"
@@ -45,11 +45,11 @@ mig::server::relay::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/m
 
 mig::server::scheduler::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
 mig::server::scheduler::agttimeout: "12h"
-mig::server::scheduler::agtheartbeatfreq: "30s"
+mig::server::scheduler::agtheartbeatfreq: "60s"
 mig::server::scheduler::agtwhitelist: ""
 mig::server::scheduler::detectmultiagents: "on"
 mig::server::scheduler::killdupagents: "on"
-mig::server::scheduler::collectorfreq: "1s"
+mig::server::scheduler::collectorfreq: "3s"
 mig::server::scheduler::periodicfreq: "83s"
 mig::server::scheduler::deleteafter: "72h"
 mig::server::scheduler::qcleanupfreq: "6h"
