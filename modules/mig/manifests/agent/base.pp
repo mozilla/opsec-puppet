@@ -9,7 +9,8 @@ class mig::agent::base(
     $moduletimeout,
     $apiurl,
     $repourl,
-    $version,
+    $rhelpkg,
+    $debpkg,
     $secretsrepourl
 ) {
     include mig::common
@@ -19,11 +20,11 @@ class mig::agent::base(
     # start a new agent. This is done in mig::agent::daemon only.
     case $::operatingsystem {
         'CentOS', 'RedHat': {
-            $pkgname = "mig-agent-${version}-1.${::architecture}.rpm"
+            $pkgname = $rhelpkg
             $installer = "rpm -Uvh"
         }
         'Ubuntu', 'Debian': {
-            $pkgname = "mig-agent_${version}_${::architecture}.deb"
+            $pkgname = $debpkg
             $installer = "dpkg -i"
         }
         default: {
@@ -68,14 +69,14 @@ class mig::agent::base(
                     show_diff => false,
                     owner => 'root',
                     mode => 600,
-                    before => [ wget::fetch['mig-agent'] ];
+                    before => [ Wget::Fetch['mig-agent'] ];
             }
             exec {
                 'set-relay-uri':
                     command     => 'sed -i "s|RELAYURITOREPLACE|$(cat /etc/mig/mig_agent_relay_uri)|" /etc/mig/mig-agent.cfg',
                     path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
                     subscribe   => [ File['/etc/mig/mig-agent.cfg'] ],
-                    before      => [ wget::fetch['mig-agent'] ],
+                    before      => [ Wget::Fetch['mig-agent'] ],
                     refreshonly => true;
             }
         }
@@ -94,7 +95,7 @@ class mig::agent::base(
         'install-mig-agent':
             command     => "${installer} /tmp/${pkgname}",
             path        => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-            subscribe   => wget::fetch['mig-agent'],
+            subscribe   => Wget::Fetch['mig-agent'],
             refreshonly => true
     }
 }

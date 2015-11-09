@@ -21,7 +21,8 @@ mig::common::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agen
 
 mig::agent::base::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-agent/"
 mig::agent::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
-mig::agent::base::version: "20150910%2B3cf667c.prod"
+mig::agent::base::rhelpkg: "mig-agent-20151105_0.a7466ac.prod-1.x86_64.rpm"
+mig::agent::base::debpkg:  "mig-agent_20151105-0.a7466ac.prod_amd64.deb"
 
 mig::server::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
 mig::server::base::version: "20151106-0.f0c4460.prod"
