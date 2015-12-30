@@ -64,7 +64,6 @@ node /mig-worker\d+.use1.opsec.mozilla.com/ {
     include base
     include puppet::agent
     include mig::server::agent_intel_worker
-    include mig::server::compliance_item_worker
 }
 node /mig-relay\d+.use1.opsec.mozilla.com/ {
     include base
