@@ -8,45 +8,10 @@ node 'puppetmaster1.use1.opsec.mozilla.com' {
     include puppet::master
 }
 
-node /nat\d+.use1.opsec.mozilla.com/ {
+node /gw\d+.use1.opsec.mozilla.com/ {
     include base
     include puppet::agent
     include nat
-}
-
-# TLS Observatory
-node /observer-web\d+.use1.opsec.mozilla.com/ {
-    include base
-    include puppet::agent
-}
-node /observer-retriever\d+.use1.opsec.mozilla.com/ {
-    include base
-    include puppet::agent
-    include observer::certretriever
-    include observer::tlsretriever
-}
-node 'observer-analyzer1.use1.opsec.mozilla.com' {
-    include base
-    include puppet::agent
-    include observer::certanalyzer
-    include observer::tlsanalyzer
-    include observer::mq
-}
-node /observer-analyzer[2-9].use1.opsec.mozilla.com/ {
-    include base
-    include puppet::agent
-    include observer::certanalyzer
-    include observer::tlsanalyzer
-}
-node /observer-trigger\d+.use1.opsec.mozilla.com/ {
-    include base
-    include puppet::agent
-    include observer::trigger
-}
-node /observer-db\d+.use1.opsec.mozilla.com/ {
-    include base
-    include puppet::agent
-    include observer::db
 }
 
 # MIG
