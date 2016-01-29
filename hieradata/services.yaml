@@ -25,7 +25,7 @@ mig::agent::base::rhelpkg: "mig-agent-20160126_1.c128226.prod-1.x86_64.rpm"
 mig::agent::base::debpkg: "mig-agent_20160126-1.c128226.prod_amd64.deb"
 
 mig::server::base::repourl: "https://s3.amazonaws.com/mozopsecrepo1/"
-mig::server::base::version: "20160126-0.c128226.prod"
+mig::server::base::version: "20160129-0.6dee9d4.prod"
 
 mig::server::api::enableauth: "on"
 mig::server::api::tokenduration: "10m"
