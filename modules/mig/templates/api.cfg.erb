@@ -3,10 +3,14 @@
     tokenduration   = <%= @tokenduration %>
 
 [server]
-    ip          = "<%= @ip %>"
-    port        = <%= @port %>
-    host        = <%= @host %>
-    baseroute   = <%= @baseroute %>
+    ip             = "<%= @ip %>"
+    port           = <%= @port %>
+    host           = <%= @host %>
+    baseroute      = <%= @baseroute %>
+    clientpublicip = <%= @clientpublicip %>
+
+[manifest]
+    requiredsignatures = <%= @apireqsignatures %>
 
 [postgres]
     host        = "<%= @dbhost %>"
