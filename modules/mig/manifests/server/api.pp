@@ -8,6 +8,8 @@ class mig::server::api(
     $port,
     $host,
     $baseroute,
+    $clientpublicip,
+    $apireqsignatures,
     $dbhost,
     $dbport,
     $dbname,
