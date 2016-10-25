@@ -72,5 +72,3 @@ mig::server::scheduler::mqtls: "true"
 mig::server::scheduler::mqcacert: "/etc/mig/ca.crt"
 mig::server::scheduler::mqclicert: "/etc/mig/scheduler.crt"
 mig::server::scheduler::mqclikey: "/etc/mig/scheduler.key"
-
-mig::server::baseworker::secretsrepourl: "https://s3.amazonaws.com/mozopsecsecrets1/mig-server/"
